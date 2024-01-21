@@ -7,7 +7,12 @@ use Yii;
 use api\models\ApiLoginForm;
 use common\models\User;
 use common\models\Userstat;
-
+/**
+ * The example class of User auth Controller for JSON API
+ * @author Alexander Beletsky
+ * @test UserApiControllerTest
+ * @version 20220311
+ */
 class UserApiController extends \yii\web\Controller
 {
     public $enableCsrfValidation = false;
@@ -17,7 +22,11 @@ class UserApiController extends \yii\web\Controller
 
     }
     /**
-     * @return array
+     * Checked is user data valid
+     * @author Alexander Beletsky
+     * @return mixed
+     * @test actionMobileAuthTest
+     * @version 20220311
      */
     public function actionCheckAuth(){
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -37,7 +46,7 @@ class UserApiController extends \yii\web\Controller
 
         if(!$items){
             $items['error'] = array(
-                'ErrorText' => \Yii::t('app', 'You User account data is not valid.'),
+                'ErrorText' => \Yii::t('app', 'Your user account data is not valid.'),
                 'PostData' => \Yii::$app->request->post()
             );
         }
@@ -46,7 +55,11 @@ class UserApiController extends \yii\web\Controller
     }
 
     /**
-     * @return array
+     * Auth user by email & pass
+     * @author Alexander Beletsky
+     * @return mixed
+     * @test actionMobileAuthTest
+     * @version 20220311
      */
     public function actionMobileAuth(){
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -95,7 +108,11 @@ class UserApiController extends \yii\web\Controller
     }
 
     /**
-     * @return array
+     * Sync user data in user device after him auth
+     * @author Alexander Beletsky
+     * @return mixed
+     * @test actionSynchronizeUserDataTest
+     * @version 20220311
      */
     public function actionSynchronizeUserData(){
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
@@ -125,7 +142,11 @@ class UserApiController extends \yii\web\Controller
     }
 
     /**
-     * @return array
+     * Signup user
+     * @author Alexander Beletsky
+     * @return mixed
+     * @test actionMobileSignupTest
+     * @version 20220311
      */
     public function actionMobileSignup(){
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
